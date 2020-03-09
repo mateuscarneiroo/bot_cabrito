@@ -2,7 +2,6 @@ import socket
 import random
 import time
 
-
 HOST = "irc.twitch.tv"
 PORT = 6667
 NICK = "carneirooo" #Host
