@@ -15,6 +15,7 @@ list_perg_resp = ["Quem inventou a lâmpada?", "Quem inventou o celular?", "Qual
                   "Qual é o nome da marca de peças de computador que tem como logo uma águia", "Quando foi inventado o ventilador? (apenas o ano)"]
 list_resp = ["alkmsdngjkas9324@##$nsajdh1b230gh854903tkldsma0-12938jndskalmf--0","thomas edison", "martin cooper", "gartic", "resident evil 4", "carneiro",
              "la casa de papel", "aorus", "1882"]
+list_pao = []
 
 cont1 = 0 #contador
 cont2 = 0 #contador
@@ -25,9 +26,11 @@ cont6 = 0 #contador
 num1 = 0 #posição 0
 num2 = 1 #posição 1
 pos = 0 #posição na matriz
+pos1 = 0
 alt_num = 0 #numero aletório
 alt_num4 = 0 #numero aleatório
 pos_vet_game = 0
+pos_vet_game1 = 0
 
 def bubbleSort(alist):
     for passnum in range(len(alist)-1,0,-1):
@@ -72,7 +75,7 @@ while True:
 
         print(username + ": " + message)
         if message == "!comandos" or cont1 == 50:
-            send_message("Os comandos disponíveis são: !uptime, !followage, !loots, !discord, !loot, !tt, !pontos e !rank")
+            send_message("Os comandos disponíveis são: !uptime, !followage, !loots, !discord, !loot, !tt, !pontos, !rank e !loja")
             cont2 += 1
             cont3 += 1
             cont4 += 1
@@ -137,7 +140,90 @@ while True:
                     for i in range(0, len(a)):
                         por = por.replace(a[i], "")
                     send_message(str(por))
-        elif cont5 == 3:
+
+        elif message == "!loja":
+            if not lista_game:
+                send_message("Ninguém tem pontos para comprar itens")
+                break
+            for i in range(len(lista_game)):
+                if username in lista_game[i][num1]:
+                    pos = i
+                else:
+                    pos_vet_game += 1
+            if pos_vet_game == len(lista_game):
+                npontos = "Você ainda não tem pontos", username
+                npontos = str(npontos)
+                a = "()',"
+                for i in range(0, len(a)):
+                    npontos = npontos.replace(a[i], "")
+                send_message(str(npontos))
+                pos_vet_game -= pos_vet_game
+            else:
+                send_message("LOJINHA")
+                send_message("Digite !loja e o numero do item ex: !loja 1")
+                send_message("1 - Pão || Valor 5 pontos")
+
+
+        elif message == "!loja 1":
+            if not lista_game:
+                send_message("Ninguém tem pontos para comprar itens")
+                break
+            for i in range(len(lista_game)):
+                if username in lista_game[i][num1]:
+                    pos = i
+                else:
+                    pos_vet_game += 1
+            if pos_vet_game == len(lista_game):
+                npontos = "Você ainda não tem pontos", username
+                npontos = str(npontos)
+                a = "()',"
+                for i in range(0, len(a)):
+                    npontos = npontos.replace(a[i], "")
+                send_message(str(npontos))
+            else:
+                pos_vet_game -= pos_vet_game
+                if lista_game [pos][num2] >= 5:
+                    lista_game [pos][num2] -= 5
+                    send_message("Você comprou um pão")
+                    if not list_pao:
+                        list_pao.insert(len(list_pao), [username,1])
+                        break
+                    for i in range(len(list_pao)):
+                        if username in list_pao[i][num1]:
+                            pos = i
+                        else:
+                            pos_vet_game += 1
+                    if pos_vet_game == len(list_pao):
+                        list_pao.insert(len(list_pao), [username, 1])
+                        print("asdasd")
+                    else:
+                        list_pao[pos][num2] = list_pao[pos][num2] + 1
+                else:
+                    send_message("Você não tem pontos suficientes para comprar esse item")
+                pos_vet_game -= pos_vet_game
+
+        elif message == "!itens":
+            if not lista_game:
+                send_message("Ninguém possi itens ainda")
+                break
+            for i in range(len(list_pao)):
+                if username in list_pao[i][num1]:
+                    pos1 = i
+                else:
+                    pos_vet_game1 += 1
+            if username == list_pao[pos1][num1]:
+                nitens = username, " tem ", list_pao[pos1][num2], "pães"
+                nitens = str(nitens)
+                a = "()',"
+                for i in range(0, len(a)):
+                    nitens = nitens.replace(a[i], "")
+                send_message(str(nitens))
+                pos_vet_game -= pos_vet_game
+            else:
+                send_message("Você não tem itens")
+                pos_vet_game -= pos_vet_game
+
+        elif cont5 == 8:
             alt_num = random.randint(2, 20)  # numero aleatório pra quantidade de pontos que vão ganhar
             alt_num2 = random.randint(0, 2)  # numero aleatório pra falar que vem pergunta
             alt_num3 = random.randint(5, 15)  # numero aleatório pro tempo
@@ -149,6 +235,7 @@ while True:
             time.sleep(alt_num3)
             send_message(list_perg_resp[alt_num4])
             cont5 -= cont5
+
         elif message == list_resp[alt_num4+1]:
             send_message("Acertou!!")
             for i in range(len(lista_game)):
@@ -181,6 +268,7 @@ while True:
                 send_message(str(por))
             alt_num4 = 0
             bubbleSort(lista_game)
+
         else:
             cont1 += 1
             cont2 += 1
