@@ -5,7 +5,7 @@ A simple bot with <b>basic functions</b> like !commands and more <b>complex func
 <h3>To install <b>requirements.txt :</b></h3>
 <pre><p>	<i>pip install -r requirements.txt</i></p></pre>
 
-<b>Changes: </b>
+<b>Change it </b>
 <pre><p>	NICK = "YOUR CHANNEL" </p></pre>
 <pre><p>	NICK2 = "bot_cabrito" </p></pre>
 <pre><p>	PASS = 'https://www.twitchapps.com/tmi/' </p></pre>
