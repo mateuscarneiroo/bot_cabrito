@@ -4,9 +4,9 @@ import time
 
 HOST = "irc.twitch.tv"
 PORT = 6667
-NICK = "carneirooo" #Host
-NICK2 = "bot_cabrito"
-PASS = 'oauth:6sbwuhm824kov7o3bfluz7p1i9ciqt'
+NICK = "YOUR CHANNEL" #nick Host
+NICK2 = "bot_cabrito" #nick bot
+PASS = 'https://www.twitchapps.com/tmi/' #catch your oauth in the link (obs: your bot channel)
 resposta = ""
 rec = ""
 lista_game = []
