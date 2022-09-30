@@ -14,7 +14,7 @@ docopt==0.6.2
 fake-useragent==0.1.11
 idna==2.8
 jellyfish==0.7.2
-joblib==0.14.1
+joblib==1.2.0
 Js2Py==0.66
 livestreamer==1.12.2
 mathparse==0.1.2
